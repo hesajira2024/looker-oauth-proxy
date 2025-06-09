@@ -9,8 +9,9 @@ def get_token(client_id: str = Form(...), client_secret: str = Form(...)):
     try:
         res = requests.post(
             "https://analytics.dev.powerdms.net:8443/api/4.0/login",
-            data={"client_id": client_id, "client_secret": client_secret},
-            timeout=10
+            json={"client_id": client_id, "client_secret": client_secret},
+            timeout=10,
+            headers={"Content-Type": "application/json"}
         )
         res.raise_for_status()
         data = res.json()
