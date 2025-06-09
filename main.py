@@ -8,7 +8,7 @@ app = FastAPI()
 def get_token(client_id: str = Form(...), client_secret: str = Form(...)):
     try:
         res = requests.post(
-            "https://analytics.dev.powerdms.net/api/4.0/login",
+            "https://analytics.dev.powerdms.net:8443/api/4.0/login",
             data={"client_id": client_id, "client_secret": client_secret},
             timeout=10
         )
